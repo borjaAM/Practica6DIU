@@ -220,7 +220,6 @@ public class Interfaz extends javax.swing.JFrame {
             System.out.println("path: " + file.getAbsolutePath());
             try {
                 FileReader reader = new FileReader(file);
-                Image
                 reader.close();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
