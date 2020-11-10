@@ -3,9 +3,6 @@ package com.mycompany.practica6diu;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -16,7 +13,7 @@ public class Lienzo extends JPanel{
 
     public Lienzo() {
         
-        //this.setPreferredSize(new Dimension(imagen.getWidth(), imagen.getHeight()));
+        this.setPreferredSize(new Dimension(1024, 768));
     }
     
     @Override
@@ -25,7 +22,9 @@ public class Lienzo extends JPanel{
         g.drawImage(imagen, 0, 0, null);
     }
     
-    public void setImagen(File file) throws IOException{
-        imagen = ImageIO.read(file);
+    public void setImagen(BufferedImage imagen){
+        this.imagen = imagen;
+        this.setPreferredSize(new Dimension(1024, 768));
+        repaint();
     }
 }

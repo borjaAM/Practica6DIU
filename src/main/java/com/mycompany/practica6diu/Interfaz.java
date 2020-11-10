@@ -1,5 +1,6 @@
 package com.mycompany.practica6diu;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,6 +14,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.highgui.HighGui;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 /**
@@ -22,7 +25,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     JFileChooser fc = new JFileChooser();
     FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes (*.jpg, *.png)", "jpg", "png");
-    private File file ;
+    private File file;
+    private Mat imagenOriginal;
+    private Mat imagenAlterada;
     
     public Interfaz() {
         initComponents();
@@ -65,14 +70,14 @@ public class Interfaz extends javax.swing.JFrame {
         );
         lienzo1Layout.setVerticalGroup(
             lienzo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
+            .addGap(0, 479, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGap(0, 753, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -81,7 +86,7 @@ public class Interfaz extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGap(0, 490, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(lienzo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -185,17 +190,17 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(221, 221, 221)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -203,7 +208,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jMIumbralizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIumbralizarActionPerformed
         Integer umbral = Integer.parseInt(JOptionPane.showInputDialog(this, "¿Cuál es el valor del umbralizado de la imagen?", "Valor de umbralizado", JOptionPane.QUESTION_MESSAGE));
-        System.out.println("Valor del umbral: " + umbral);
+        imagenAlterada = umbralizar(imagenOriginal, umbral);
+        lienzo1.setImagen((BufferedImage) HighGui.toBufferedImage(imagenAlterada));
     }//GEN-LAST:event_jMIumbralizarActionPerformed
 
     private void jMIcerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIcerrarActionPerformed
@@ -217,15 +223,8 @@ public class Interfaz extends javax.swing.JFrame {
         int option = fc.showOpenDialog(this);
         file = fc.getSelectedFile();
         if(option == JFileChooser.APPROVE_OPTION){
-            System.out.println("path: " + file.getAbsolutePath());
-            try {
-                FileReader reader = new FileReader(file);
-                reader.close();
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            imagenOriginal = Imgcodecs.imread(file.getPath());
+            lienzo1.setImagen((BufferedImage) HighGui.toBufferedImage(imagenOriginal));
         }
     }//GEN-LAST:event_jMIabrirActionPerformed
 
@@ -233,13 +232,7 @@ public class Interfaz extends javax.swing.JFrame {
         int option = fc.showSaveDialog(this);
         if(option == JFileChooser.APPROVE_OPTION){
             file = fc.getSelectedFile();
-            try {
-                FileWriter writer = new FileWriter(file);
-                writer.write(file.getName());
-                writer.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Imgcodecs.imwrite(file.getPath(), imagenAlterada);
         }
     }//GEN-LAST:event_jMIguardarActionPerformed
 
