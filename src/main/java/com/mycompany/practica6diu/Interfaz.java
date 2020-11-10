@@ -22,7 +22,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     JFileChooser fc = new JFileChooser();
     FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes (*.jpg, *.png)", "jpg", "png");
-    private File file;
+    private File file ;
     
     public Interfaz() {
         initComponents();
