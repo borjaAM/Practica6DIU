@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Lienzo extends JPanel{
     private BufferedImage imagen = null;
 
-    public Lienzo() throws IOException {
+    public Lienzo() {
         
         //this.setPreferredSize(new Dimension(imagen.getWidth(), imagen.getHeight()));
     }
