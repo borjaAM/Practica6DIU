@@ -164,7 +164,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Imagen para umbralizar">
+            <TitledBorder title="Imagen para umbralizar con tama&#xf1;o m&#xe1;ximo de 1024x768">
               <Font PropertyName="font" name="Times New Roman" size="12" style="1"/>
             </TitledBorder>
           </Border>
@@ -220,7 +220,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Lienzo para visualizar la imagen"/>
+            <Property name="toolTipText" type="java.lang.String" value="Lienzo para visualizar la imagen (.jpg o .png) seleccionada por el usuario"/>
           </Properties>
 
           <Layout>

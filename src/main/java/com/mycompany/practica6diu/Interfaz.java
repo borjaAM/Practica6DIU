@@ -57,10 +57,10 @@ public class Interfaz extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(230, 90, 66));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Imagen para umbralizar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Imagen para umbralizar con tamaño máximo de 1024x768", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
 
         lienzo1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lienzo1.setToolTipText("Lienzo para visualizar la imagen");
+        lienzo1.setToolTipText("Lienzo para visualizar la imagen (.jpg o .png) seleccionada por el usuario");
 
         javax.swing.GroupLayout lienzo1Layout = new javax.swing.GroupLayout(lienzo1);
         lienzo1.setLayout(lienzo1Layout);
@@ -264,7 +264,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiDescripcionActionPerformed
 
     private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
-        JOptionPane.showMessageDialog(jMenu1, "El usuario puede seleccionar una imagen en su equipo con el formato (.jpg o .png) para mostrar la imagen en la aplicación y luego poder realizar el umbralizado.", "Ayuda: Abrir", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(jMenu1, "El usuario puede seleccionar una imagen en su equipo con el formato (.jpg o .png) para mostrar la imagen en la aplicación con tamaño máximo de 1024x768.", "Ayuda: Abrir", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGuardarActionPerformed
