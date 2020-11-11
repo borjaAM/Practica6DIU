@@ -215,10 +215,16 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMIumbralizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIumbralizarActionPerformed
-        Integer umbral = Integer.parseInt(JOptionPane.showInputDialog(this, "¿Cuál es el valor del umbralizado de la imagen?", "Valor de umbralizado", JOptionPane.QUESTION_MESSAGE));
-        imagenAlterada = umbralizar(imagenOriginal, umbral);
+        try{
+            Integer umbral = Integer.parseInt(JOptionPane.showInputDialog(this, "¿Cuál es el valor del umbralizado de la imagen?", "Valor de umbralizado", JOptionPane.QUESTION_MESSAGE));
+            imagenAlterada = umbralizar(imagenOriginal, umbral);
         lienzo1.setImagen((BufferedImage) HighGui.toBufferedImage(imagenAlterada));
         jMIguardar.setEnabled(true);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Sólo se pueden números enteros");
+        }
+        
+        
     }//GEN-LAST:event_jMIumbralizarActionPerformed
 
     private void jMIcerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIcerrarActionPerformed
@@ -314,6 +320,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Interfaz().setVisible(true);
             }
