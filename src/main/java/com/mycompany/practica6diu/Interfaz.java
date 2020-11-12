@@ -76,7 +76,7 @@ public class Interfaz extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel1.setText("Hecho por: Borja √Ålvarez Medina y Esther Zurita Curbelo");
+        jLabel1.setText("Hecho por: Borja √?lvarez Medina y Esther Zurita Curbelo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
